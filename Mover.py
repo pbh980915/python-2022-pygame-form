@@ -72,7 +72,15 @@ class Mover:
         if flag=='x': self.vpos.x = -self.vpos.x
         if flag=='y': self.vpos.y = -self.vpos.y
         
-print(Mover())
 def collide (obj1, obj2):
     # it use OBB collide
-    pass
+    # 물체의 x길이를 잽니다.
+    o1Xrange = obj1.fixture[:,0].max()+obj1.lpos.x - obj1.fixture[:,0].min()+obj1.lpos.x
+    o2Xrange = obj2.fixture[:,0].max()+obj2.lpos.x - obj2.fixture[:,0].min()+obj2.lpos.x
+    
+    # 물체사이의 x길이를 잽니다.
+    o12range = obj2.lpos.copy().sub(obj1.lpos)
+    
+    # 두물체의 x길이의 합보다 물체사이의 x길이가 작다면 충돌입니다.
+    if o1Xrange/2 + o2Xrange/2 < o12range.x: return True
+    else: return False
