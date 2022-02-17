@@ -34,6 +34,7 @@ class App:
         self.obj2.fixtureOrigin *= 10
         self.obj2.langle = 45
         self.obj2.set_fixture_angle(self.obj2.langle)
+        self.obj2.friction = 0.005
         
             
             
