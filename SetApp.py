@@ -53,6 +53,10 @@ def pyRect (shape, color, width=None):
 def pyLine (posS, posE, color, width):
     pygame.draw.line(AppData.screen, color, posS, posE, width)
     
+def pyPoly (shape, color, width=None):
+    if width != None: pygame.draw.polygon(AppData.screen, color, shape, width)
+    else            : pygame.draw.polygon(AppData.screen, color, shape)
+    
     
     
 # sound Function 
