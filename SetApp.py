@@ -1,11 +1,11 @@
 import pygame
-from Vec2d import *
 import sys
 
 class AppData:
+    screen_w, screen_h = 640,480
     pygame.init()
     pygame.display.set_caption("pygame form1")		
-    screen = pygame.display.set_mode((640, 480))	
+    screen = pygame.display.set_mode((screen_w, screen_h))	
     clock = pygame.time.Clock()	
     font = pygame.font.SysFont("arial", 30)
     bgColor = (0,0,0)
