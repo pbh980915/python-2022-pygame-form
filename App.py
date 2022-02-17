@@ -1,5 +1,6 @@
 # 사용할 코드들을 설정합니다.
 from SetApp import *
+from Mover import *
 
 
 class App:
@@ -22,6 +23,18 @@ class App:
         self.sound = load_sound('soundSample.mp3')
         self.image = load_image('imageSample.png',scale=[200,200], rotate=30)
         self.isKey2 = False
+        
+        self.obj1 = Mover()
+        self.obj1.lpos = Vec2d(300,300)
+        self.obj1.vpos = Vec2d(1,1)
+        self.obj1.fixtureOrigin *= 10
+        self.obj2 = Mover()
+        self.obj2.lpos = Vec2d(300,310)
+        self.obj2.vpos = Vec2d(1,-1)
+        self.obj2.fixtureOrigin *= 10
+        self.obj2.langle = 45
+        self.obj2.set_fixture_angle(self.obj2.langle)
+        
             
             
     # 2-1. 조작이 일어나는 부분입니다.        
@@ -49,6 +62,8 @@ class App:
                 			
     # 2-2. 갱신이 일어나는 부분입니다.    
     def update (self): 
+        self.obj1.update()
+        self.obj2.update()
         pass
         
         
@@ -60,6 +75,12 @@ class App:
         
         display_font("press 1 to play mp3", (255,255,255), (10,10))
         display_font("press 2 to display cat", (255,255,255), (10,50))
+        
+        if collide_check(self.obj1, self.obj2):
+            print("collide")
+            
+        pyPoly(self.obj1.fixture+self.obj1.lpos.tonp(), (255,0,0))
+        pyPoly(self.obj2.fixture+self.obj2.lpos.tonp(), (0,255,0))
         
         if self.isKey2: display_image(self.image, (200,200))
         
