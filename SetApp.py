@@ -12,9 +12,9 @@ class AppData:
     running = True
         
         
+        
+        
 # App Function
-
-
 
 
 # image Function
@@ -34,12 +34,10 @@ def display_image(img, location):
 
 
 
-
 # font Function
 def display_font (msg, color, location):
-    text = AppData.font.render(msg, color)
+    text = AppData.font.render(msg, True, color)
     AppData.screen.blit(text, location)
-
 
 
 
@@ -54,3 +52,14 @@ def pyRect (shape, color, width=None):
     
 def pyLine (posS, posE, color, width):
     pygame.draw.line(AppData.screen, color, posS, posE, width)
+    
+    
+    
+# sound Function 
+def load_sound(path):
+    # sound mp3 not supported in raspberry
+    return pygame.mixer.Sound(path)
+
+def update_sound(sound, running):
+    if running: sound.play(-1)
+    else: sound.stop()
