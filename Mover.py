@@ -33,6 +33,7 @@ class Mover:
         
         self.airDrag = 0
         self.friction = 0
+        self.mass = 1
         
         self.fixture = 0
         self.fixtureOrigin = np.array([[-5,5],[5,5],[5,-5],[-5,-5]])
@@ -48,8 +49,10 @@ class Mover:
         self.aangle=0
         
         self.vpos.mlt(1-self.airDrag)
-        if self.vpos.mag() > self.friction:
+        if self.vpos.mag() >= self.friction:
             self.vpos.sub(self.vpos.norm().mlt(self.friction))
+        else: self.vpos.mlt(0)
+        
         self.set_fixture_angle(self.langle)
         
         self.update_edge()
