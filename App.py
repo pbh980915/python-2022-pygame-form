@@ -26,7 +26,7 @@ class App:
         
         self.obj1 = Mover()
         self.obj1.lpos = Vec2d(300,300)
-        self.obj1.vpos = Vec2d(1,1)
+        self.obj1.vpos = Vec2d(5,1)
         self.obj1.fixtureOrigin *= 10
         self.obj2 = Mover()
         self.obj2.lpos = Vec2d(300,510)
