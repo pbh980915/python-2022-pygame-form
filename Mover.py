@@ -94,3 +94,15 @@ def collide_check (obj1, obj2):
         if o1Yrange/2 + o2Yrange/2 > abs(o12range.y): 
             return True
     return False
+
+def update_collide(obj1, obj2):
+    # elastic collision in sphere
+    ek1 = obj1.mass*obj1.vpos.mag()**2/2
+    ek2 = obj2.mass*obj2.vpos.mag()**2/2
+    
+    v1x = ((obj1.mass - obj2.mass)*obj1.vpos.x + 2*obj2.mass*obj2.vpos.x)/(obj1.mass+obj2.mass)
+    v1y = ((obj1.mass - obj2.mass)*obj1.vpos.y + 2*obj2.mass*obj2.vpos.y)/(obj1.mass+obj2.mass)
+    v2x = ((obj2.mass - obj1.mass)*obj2.vpos.x + 2*obj1.mass*obj1.vpos.x)/(obj2.mass+obj1.mass)
+    v2y = ((obj2.mass - obj1.mass)*obj2.vpos.y + 2*obj1.mass*obj1.vpos.y)/(obj2.mass+obj1.mass)
+    obj1.vpos.set(v1x, v1y)
+    obj2.vpos.set(v2x, v2y)
