@@ -11,7 +11,7 @@ class Vec2d:
     def sub(self,n): self.x -= n.x; self.y -= n.y; return self
     def mlt(self,n): self.x *= n;   self.y *= n  ; return self 
     def mag(self): return math.sqrt(self.x**2 + self.y**2)
-    def norm(self): self.copy().mlt(1/self.mag())
+    def norm(self): return self.copy().mlt(1/self.mag())
     def get_angle (self): return math.atan2(self.y, self.x)*180/math.pi
     def set_angle (self, angle): 
         self.x = np.cos(np.radians(angle))
@@ -52,13 +52,15 @@ class Mover:
             self.vpos.sub(self.vpos.norm().mlt(self.friction))
         self.set_fixture_angle(self.langle)
         
+        self.update_edge()
+        
 
     def set_fixture_angle (self, angle):
         x = self.fixtureOrigin[:,0]
         y = self.fixtureOrigin[:,1]
         newX = np.cos(np.radians(angle))*x - np.sin(np.radians(angle))*y
         newY = np.sin(np.radians(angle))*x + np.cos(np.radians(angle))*y
-        self.fixture = np.vstack((newX,newY))
+        self.fixture = np.vstack((newX,newY)).transpose()
         
         
     def update_edge (self):
