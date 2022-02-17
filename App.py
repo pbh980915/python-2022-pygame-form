@@ -29,12 +29,12 @@ class App:
         self.obj1.vpos = Vec2d(1,1)
         self.obj1.fixtureOrigin *= 10
         self.obj2 = Mover()
-        self.obj2.lpos = Vec2d(300,310)
+        self.obj2.lpos = Vec2d(300,510)
         self.obj2.vpos = Vec2d(1,-1)
         self.obj2.fixtureOrigin *= 10
         self.obj2.langle = 45
         self.obj2.set_fixture_angle(self.obj2.langle)
-        self.obj2.friction = 0.005
+        self.obj2.friction = 0.0001
         
             
             
@@ -78,7 +78,7 @@ class App:
         display_font("press 2 to display cat", (255,255,255), (10,50))
         
         if collide_check(self.obj1, self.obj2):
-            print("collide")
+            update_collide(self.obj1, self.obj2)
             
         pyPoly(self.obj1.fixture+self.obj1.lpos.tonp(), (255,0,0))
         pyPoly(self.obj2.fixture+self.obj2.lpos.tonp(), (0,255,0))
