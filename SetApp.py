@@ -3,13 +3,13 @@ from Vec2d import *
 import sys
 
 class AppData:
-    def __init__(self):
-        pygame.init()
-        pygame.display.set_caption("pygame form1")		
-        screen = pygame.display.set_mode((640, 480))	
-        clock = pygame.time.Clock()	
-        font = pygame.font.SysFont("arial", 30)
-        bgColor = (0,0,0)
+    pygame.init()
+    pygame.display.set_caption("pygame form1")		
+    screen = pygame.display.set_mode((640, 480))	
+    clock = pygame.time.Clock()	
+    font = pygame.font.SysFont("arial", 30)
+    bgColor = (0,0,0)
+    running = True
         
         
 # App Function
