@@ -17,6 +17,12 @@ mover : 게임 물체의 간단한 물리연산을 제공합니다 <br>
 
 구조
 
-등을 제공합니다
+위치, 속도, 가속도, 회전
+
+마찰, 공기저항
+
+OBB충돌
+
+
 
 ![image](https://user-images.githubusercontent.com/82069536/154519071-45d58451-5fbc-4255-9a82-4b18931c1c9e.png)
