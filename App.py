@@ -31,9 +31,12 @@ class App:
                 AppData.running = False
                 sys.exit()	
             
-            if event.type == pygame.MOUSEBUTTONDOWN: pass
+            pos = pygame.mouse.get_pos()
+            if event.type == pygame.MOUSEBUTTONDOWN: 
+                control_button([100,100,200,50],pos,button_test)
+                
             if event.type == pygame.MOUSEBUTTONUP: pass
-            if event.type == pygame.MOUSEMOTION:  pos = pygame.mouse.get_pos()
+            if event.type == pygame.MOUSEMOTION: pass
             
             if event.type == pygame.KEYDOWN: 
                 if event.key == pygame.K_1:  update_sound(self.sound, running = True)
@@ -48,9 +51,12 @@ class App:
     def update (self): 
         pass
         
+        
     # 2-3. 출력이 일어나는 부분입니다.
     def display (self): 
         AppData.screen.fill(AppData.bgColor)	
+        
+        draw_button([100,100,200,50],(128,128,128),"button")
         
         display_font("press 1 to play mp3", (255,255,255), (10,10))
         display_font("press 2 to display cat", (255,255,255), (10,50))
