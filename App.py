@@ -33,6 +33,7 @@ class App:
         self.obj2.vpos = Vec2d(1,-1)
         self.obj2.fixtureOrigin *= 10
         self.obj2.langle = 45
+        self.obj2.vangle = 0.3
         self.obj2.set_fixture_angle(self.obj2.langle)
         self.obj2.friction = 0.0001
         
