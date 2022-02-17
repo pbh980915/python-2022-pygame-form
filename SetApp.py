@@ -17,6 +17,7 @@ class AppData:
 # App Function
 
 
+
 # image Function
 def load_image(path, scale = None, rotate = None):
     img = pygame.image.load(path)
@@ -67,3 +68,18 @@ def load_sound(path):
 def update_sound(sound, running):
     if running: sound.play(-1)
     else: sound.stop()
+    
+    
+    
+# set_button
+def control_button (shape, pos, function):
+    if (shape[0])<pos[0]<(shape[0]+shape[2]):
+        if (shape[1])<pos[1]<(shape[1]+shape[3]):
+            function()
+
+def draw_button (shape, color, msg, msgColor = (0,0,0)):
+    pyRect(shape, color)
+    display_font(msg, msgColor, (shape[0],shape[1]))
+    
+def button_test ():
+    print("button press")
